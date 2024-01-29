@@ -12,18 +12,26 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        if len(needle) > len(haystack):
-            return -1
-        for i in range(len(haystack)):
-            if haystack[i] == needle[0]:
-                if len(needle) == 1:
-                    return i
-                for j in range(i + 1, i + len(needle)):
-                    if j < len(haystack):
-                        if haystack[j] != needle[j - i]:
-                            break
-                        elif j - i + 1 == len(needle):
-                            return i
+        m = len(haystack)
+        n = len(needle)
+
+        for i in range(m - n + 1):
+            if haystack[i:i + n] == needle:
+                return i
+
         return -1
+        # if len(needle) > len(haystack):
+        #     return -1
+        # for i in range(len(haystack)):
+        #     if haystack[i] == needle[0]:
+        #         if len(needle) == 1:
+        #             return i
+        #         for j in range(i + 1, i + len(needle)):
+        #             if j < len(haystack):
+        #                 if haystack[j] != needle[j - i]:
+        #                     break
+        #                 elif j - i + 1 == len(needle):
+        #                     return i
+        # return -1
 # @lc code=end
 
