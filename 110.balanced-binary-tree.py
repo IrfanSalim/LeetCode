@@ -12,25 +12,38 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    isBal = True
     def isBalanced(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-
-        def height(A):
+        def isBala(A):
             if not A:
-                return -1
-            lh = height(A.left)
-            rh = height(A.right)
-
-            if abs(lh - rh) > 1:
-                self.isBal = False
+                return [-1, True]
             
-            return max(lh, rh) + 1
+            l = isBala(A.left)
+            r = isBala(A.right)
 
-        height(root)
-        return self.isBal      
+            if not l[1] or not r[1]:
+                return [-1, False]
+            elif abs(l[0] - r[0]) > 1:
+                return [-1, False]
+            else:
+                return [max(l[0], r[0]) + 1, True]
+            
+        return isBala(root)[1]
+    
+    # isBal = True
+    # def isBalanced(self, root):
+    #     """
+    #     :type root: TreeNode
+    #     :rtype: bool
+    #     """
+    #     def height(A):
+    #         if not A:
+    #             return -1
+    #         lh = height(A.left)
+    #         rh = height(A.right)
+    #         if abs(lh - rh) > 1:
+    #             self.isBal = False
+    #         return max(lh, rh) + 1
+    #     height(root)
+    #     return self.isBal      
 # @lc code=end
 
