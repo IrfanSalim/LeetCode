@@ -14,7 +14,7 @@ class Node(object):
         self.right = right
         self.next = next
 """
-
+from collections import deque
 class Solution(object):
     def connect(self, root):
         """
@@ -33,5 +33,20 @@ class Solution(object):
                 temp = temp.next
             curr = curr.left
         return root
+
+        # basic approach to use level order traversal with help of deque
+        # q = deque()
+        # q.append(root)
+        # while q:
+        #     sz = len(q)
+        #     for i in range(sz):
+        #         ele = q.popleft()
+        #         if i != sz - 1:
+        #             ele.next = q[0]
+        #         if ele.left:
+        #             q.append(ele.left)
+        #         if ele.right:
+        #             q.append(ele.right)
+        # return root
 # @lc code=end
 
