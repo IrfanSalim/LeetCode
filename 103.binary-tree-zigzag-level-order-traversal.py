@@ -23,19 +23,20 @@ class Solution(object):
         q = deque()
         q.append(root)
         ans = []
+        flag = True
         while q:
             sz = len(q)
-            temp = []
+            temp = [0] * sz
             for i in range(sz):
                 ele = q.popleft()
-                temp.append(ele.val)
+                idx = i if flag else sz - i - 1
+                temp[idx] = ele.val
                 if ele.left:
                     q.append(ele.left)
                 if ele.right:
                     q.append(ele.right)
-            if len(ans) % 2:
-                temp = temp[::-1]
             ans.append(temp)
+            flag = not flag
         return ans
 # @lc code=end
 
