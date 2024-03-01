@@ -12,14 +12,15 @@ class Solution(object):
         :rtype: int
         """
         # linear approach without extra space using floyds tortoise hare cycle detection algo
-        slow = nums[nums[0]]
-        fast = nums[nums[nums[0]]]
+        slow, fast = 0, 0
 
-        while slow != fast:
+        while True:
             slow = nums[slow]
             fast = nums[nums[fast]]
+            if slow == fast:
+                break
 
-        slow = nums[0]
+        slow = 0
 
         while slow != fast:
             slow = nums[slow]
