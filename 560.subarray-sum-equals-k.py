@@ -12,13 +12,12 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        for i in range(1, len(nums)):
-            nums[i] = nums[i] + nums[i - 1]
-        
+        summ = 0
         seen = {0: 1}
         count = 0
         for i in range(len(nums)):
-            x = nums[i]
+            summ += nums[i]
+            x = summ
             y = x - k
             if y in seen:
                 count += seen[y]
