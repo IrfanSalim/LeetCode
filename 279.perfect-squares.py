@@ -12,7 +12,17 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        # dp = [n] * (n+1)
+        # dp[0] = 0
+        # for i in range(2, n+1):
+        #     x = 1
+        #     while x*x <= i:
+        #         dp[i] = min(dp[i], dp[i - (x*x)]+1)
+        #         x += 1
+        # return dp[n]
+
+        #------------------------------------------------------------------------------------------------------
+
         # returns True if the input number x is a square number,
         # else returns False
         def isSquare(x):
@@ -47,6 +57,9 @@ class Solution(object):
             return 3;
 
         return cntSquares(n)
+    
+    #------------------------------------------------------------------------------------------------------
+
         # recursive top-down approach
         # dp = [-1] * (n+1)
         # def minSquares(A):
