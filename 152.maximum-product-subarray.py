@@ -43,7 +43,6 @@ class Solution(object):
             ans = max(ans, product)
         
         return ans
-
 # @lc code=end
     
 
