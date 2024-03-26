@@ -18,19 +18,21 @@ class Solution(object):
             return 1
         lastChar = 1
         lastTwoChars = 1
+
         for i in range(1, n):
             one = int(s[i])
-            two = int(s[i-1]) * 10 + one
+            two = int(s[i-1:i+1])
 
             curr = 0
             if one > 0:
-                curr += lastTwoChars
-            if two >= 10 and two <= 26:
                 curr += lastChar
-            lastChar = lastTwoChars
-            lastTwoChars = curr
+            if two >= 10 and two <= 26:
+                curr += lastTwoChars
 
-        return lastTwoChars
+            lastTwoChars = lastChar
+            lastChar = curr
+
+        return lastChar
 
         #------------------------------------------------------------------------------------------------------
 
