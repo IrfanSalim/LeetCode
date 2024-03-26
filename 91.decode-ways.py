@@ -12,17 +12,41 @@ class Solution(object):
         :rtype: int
         """
         n = len(s)
-        dp = [0] * (n+1)
-        dp[n] = 1
-        for i in range(n-1, -1, -1):
-            if s[i] == "0":
-                continue
-            else:
-                dp[i] = dp[i+1]
-                if i < n-1 and int(s[i] + s[i+1]) <= 26:
-                    dp[i] += dp[i+2]
+        if s[0] == "0":
+            return 0
+        if n == 1:
+            return 1
+        lastChar = 1
+        lastTwoChars = 1
+        for i in range(1, n):
+            one = int(s[i])
+            two = int(s[i-1]) * 10 + one
 
-        return dp[0]
+            curr = 0
+            if one > 0:
+                curr += lastTwoChars
+            if two >= 10 and two <= 26:
+                curr += lastChar
+            lastChar = lastTwoChars
+            lastTwoChars = curr
+
+        return lastTwoChars
+
+        #------------------------------------------------------------------------------------------------------
+
+        # bottom up DP with space
+        # n = len(s)
+        # dp = [0] * (n+1)
+        # dp[n] = 1
+        # for i in range(n-1, -1, -1):
+        #     if s[i] == "0":
+        #         continue
+        #     else:
+        #         dp[i] = dp[i+1]
+        #         if i < n-1 and int(s[i] + s[i+1]) <= 26:
+        #             dp[i] += dp[i+2]
+
+        # return dp[0]
 
         #------------------------------------------------------------------------------------------------------
 
