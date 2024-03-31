@@ -15,10 +15,9 @@ class Solution(object):
         if amount == 0:
             return 0
         n = len(coins)
-        dp = [-1] * (amount+1)
+        dp = [float('inf')] * (amount+1)
         dp[0] = 0
         for i in range(1, amount+1):
-            dp[i] = float('inf')
             for j in range(n):
                 if coins[j] <= i:
                     dp[i] = min(dp[i], 1+dp[i - coins[j]])
