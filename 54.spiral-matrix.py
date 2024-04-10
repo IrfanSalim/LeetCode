@@ -13,29 +13,35 @@ class Solution(object):
         """
         m = len(matrix)
         n = len(matrix[0])
-        i, j = 0, 0
+        left, right = 0, n
+        top, bottom = 0, m
+
         ans = []
-        while m > 1 and n > 1:
-            hor = m-1
-            ver = n-1
-            while j < ver:
-                ans.append(matrix[i][j])
-                j += 1
-            while i < hor:
-                ans.append(matrix[i][j])
-                i += 1
-            while j > 0:
-                ans.append(matrix[i][j])
-                j -= 1
-            while i > 0:
-                ans.append(matrix[i][j])
-                i -= 1
-            i += 1
-            j += 1
-            n -= 2
-            m -= 2
-        if n == 1 or m == 1:
-            ans.append(matrix[i][j])
+
+        while left < right and top < bottom:
+            # left to right
+            for i in range(left, right):
+                ans.append(matrix[top][i])
+            top += 1
+
+            # top to bottom
+            for j in range(top, bottom):
+                ans.append(matrix[j][right-1])
+            right -= 1
+
+            if not (left < right and top < bottom):
+                break
+
+            # right to left
+            for i in range(right-1, left-1, -1):
+                ans.append(matrix[bottom-1][i])
+            bottom -= 1
+
+            # bottom to top
+            for j in range(bottom-1, top-1, -1):
+                ans.append(matrix[j][left])
+            left += 1
+        
         return ans
 # @lc code=end
 
