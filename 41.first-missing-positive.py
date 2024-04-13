@@ -27,5 +27,12 @@ class Solution(object):
         for i in range(n):
             if A[i] != i+1: return i+1
         return n+1
+
+        # approach usint set
+        # nums = set(nums)
+        # x = 1
+        # while x in nums:
+        #     x += 1
+        # return x
 # @lc code=end
 
