@@ -28,7 +28,7 @@ class Solution(object):
             if A[i] != i+1: return i+1
         return n+1
 
-        # approach usint set
+        # approach using set
         # nums = set(nums)
         # x = 1
         # while x in nums:
