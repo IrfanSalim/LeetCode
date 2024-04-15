@@ -17,7 +17,6 @@ class Solution(object):
         ans = []
         for i in range(1, n):
             if intervals[i][0] <= curr[1]:
-                curr[0] = min(curr[0], intervals[i][0])
                 curr[1] = max(curr[1], intervals[i][1])
             else:
                 ans.append(curr)
