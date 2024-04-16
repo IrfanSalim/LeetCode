@@ -11,6 +11,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # bottom up faster approach
         dp = [1] * (n+1)
 
         for nodes in range(2, n+1):
@@ -22,5 +23,22 @@ class Solution(object):
             dp[nodes] = total
         
         return dp[n]
+
+        # top down dp approach
+        # dp = [-1] * (n+1)
+
+        # def totalTrees(i):
+        #     if i <= 1:
+        #         return 1
+        #     if dp[i] == -1:
+        #         total = 0
+        #         for j in range(1, i+1):
+        #             left = totalTrees(j-1,)
+        #             right = totalTrees(i-j)
+        #             total += left * right
+        #         dp[i] = total
+        #     return dp[i]
+        
+        # return totalTrees(n)
 # @lc code=end
 
