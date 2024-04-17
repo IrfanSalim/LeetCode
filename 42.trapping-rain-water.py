@@ -11,6 +11,18 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
-        
+        left, right = 0, len(height)-1
+        lmax, rmax = height[left], height[right]
+        ans = 0
+        while left < right:
+            lmax = max(lmax, height[left])
+            rmax = max(rmax, height[right])
+            if lmax < rmax:
+                ans += min(lmax, rmax) - height[left]
+                left += 1
+            else:
+                ans += min(lmax, rmax) - height[right]
+                right -= 1
+        return ans
 # @lc code=end
 
