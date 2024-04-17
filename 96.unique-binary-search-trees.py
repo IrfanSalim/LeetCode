@@ -11,18 +11,32 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        # bottom up faster approach
-        dp = [1] * (n+1)
+        # maths approach of finding catalan number
+        memo = {}
 
-        for nodes in range(2, n+1):
-            total = 0
-            for root in range(1, nodes+1):
-                left = root - 1
-                right = nodes - root
-                total += dp[left] * dp[right]
-            dp[nodes] = total
+        def fact(n):
+            if n in memo:
+                return memo[n]
+            ans = 1
+            for i in range(2, n+1):
+                ans *= i
+            memo[n] = ans
+            return ans
+
+        return int(fact(2*n)//(fact(n+1) * fact(n)))
+
+        # bottom up faster approach
+        # dp = [1] * (n+1)
+
+        # for nodes in range(2, n+1):
+        #     total = 0
+        #     for root in range(1, nodes+1):
+        #         left = root - 1
+        #         right = nodes - root
+        #         total += dp[left] * dp[right]
+        #     dp[nodes] = total
         
-        return dp[n]
+        # return dp[n]
 
         # top down dp approach
         # dp = [-1] * (n+1)
