@@ -12,7 +12,19 @@ class Solution(object):
         :type t: str
         :rtype: int
         """
-        
+        n = len(s)
+        m = len(t)
+
+        if n < m: return 0
+
+        dp = [1] + [0] * m
+
+        for i in range(n):
+            for j in reversed(range(m)):
+                if s[i] == t[j]:
+                    dp[j + 1] += dp[j]
+
+        return dp[m] 
 # @lc code=end
         
 
