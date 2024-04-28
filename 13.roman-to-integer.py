@@ -30,5 +30,31 @@ class Solution(object):
                 ans += m[s[i]]
         
         return ans
+
+        # value = 0
+        # prev = 0
+        # for ch in s:
+        #     if ch == 'I':
+        #         value += 1
+        #         prev = 1
+        #     elif ch == 'V':
+        #         value += 3 if prev == 1 else 5
+        #         prev = 5
+        #     elif ch == 'X':
+        #         value += 8 if prev == 1 else 10
+        #         prev = 10
+        #     elif ch == 'L':
+        #         value += 30 if prev == 10 else 50
+        #         prev = 50
+        #     elif ch == 'C':
+        #         value += 80 if prev == 10 else 100
+        #         prev = 100
+        #     elif ch == 'D':
+        #         value += 300 if prev == 100 else 500
+        #         prev = 500
+        #     elif ch == 'M':
+        #         value += 800 if prev == 100 else 1000
+        #         prev = 1000
+        # return value
 # @lc code=end
 
