@@ -11,15 +11,33 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        res = 0
+        # remainder approach
+        is_negative = False
+
         if x < 0:
-            res = int(str(x)[1:][::-1]) * -1
-        else:
-            res = int(str(x)[::-1])
+            is_negative = True
+            x *= -1
         
-        if res > 2 ** 31 - 1 or res < -2 ** 31:
+        res = 0
+        while x > 0:
+            res = (res * 10) + (x % 10)
+            x //= 10
+        
+        if res > 2 ** 31 - 1:
             return 0
         
-        return res
+        return res * -1 if is_negative else res
+
+        # approach with converting num to string and reversion
+        # res = 0
+        # if x < 0:
+        #     res = int(str(x)[1:][::-1]) * -1
+        # else:
+        #     res = int(str(x)[::-1])
+        
+        # if res > 2 ** 31 - 1 or res < -2 ** 31:
+        #     return 0
+        
+        # return res
 # @lc code=end
 
