@@ -18,6 +18,19 @@ class Solution(object):
         :type targetSum: int
         :rtype: List[List[int]]
         """
+        ans = []
+        self.getPath(root, ans, [], targetSum)
+        return ans
         
+    def getPath(self, root, ans, curr, target):
+        if not root:
+            return
+        curr.append(root.val)
+        if not root.right and not root.left and root.val == target:
+            ans.append(curr[:])
+        else:
+            self.getPath(root.left, ans, curr, target - root.val)
+            self.getPath(root.right, ans, curr, target - root.val)
+        curr.pop()
 # @lc code=end
 
